@@ -1,0 +1,47 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="UrlValidatorTestNGSuite">
+    <test name="test1">
+        <parameter name="url" value="http://example.com/path?"/>
+        <parameter name="expected" value="false"/>
+        <classes>
+            <class name="org.apache.commons.validator.routines.UrlValidatorTestNG">
+                <methods>
+                    <include name="testIsValidWithInvalidPath"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="test2">
+        <parameter name="path" value="/path?"/>
+        <parameter name="expected" value="false"/>
+        <classes>
+            <class name="org.apache.commons.validator.routines.UrlValidatorTestNG">
+                <methods>
+                    <include name="testIsValidPathWithQuestionMark"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="test3">
+        <parameter name="scheme" value="https"/>
+        <parameter name="expected" value="true"/>
+        <classes>
+            <class name="org.apache.commons.validator.routines.UrlValidatorTestNG">
+                <methods>
+                    <include name="testIsValidScheme"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="test4">
+        <parameter name="url" value="https://example.com/path/to/resource"/>
+        <parameter name="expected" value="true"/>
+        <classes>
+            <class name="org.apache.commons.validator.routines.UrlValidatorTestNG">
+                <methods>
+                    <include name="testValidUrl"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
